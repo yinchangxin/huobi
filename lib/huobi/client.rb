@@ -22,7 +22,7 @@ module Huobi
     end
 
     def orders
-      post '', method: 'get_delegations'
+      post '', method: 'get_orders'
     end
 
     def buy options
@@ -34,11 +34,11 @@ module Huobi
     end
 
     def cancel order_id
-      post '', method: 'cancel_delegation', id: order_id
+      post '', method: 'cancel_order', id: order_id
     end
 
     def sync order_id
-      post '', method: 'get_delegation', id: order_id
+      post '', method: 'order_info', id: order_id
     end
   end
 end

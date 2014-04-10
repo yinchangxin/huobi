@@ -71,13 +71,13 @@ describe Huobi do
     describe "#orders" do
       before do
         @secret = 'secret'
-        stub_post(method: 'get_delegations').
+        stub_post(method: 'get_orders').
           to_return(body: fixture('orders.json'))
       end
 
       it "get orders" do
         orders = @client.orders
-        expect(a_post(method: 'get_delegations')).to have_been_made
+        expect(a_post(method: 'get_orders')).to have_been_made
         expect(orders[0]['order_price']).to eq '5107.000'
       end
     end
@@ -113,13 +113,13 @@ describe Huobi do
     describe "#cancel" do
       before do
         @secret = 'secret'
-        stub_post(method: 'cancel_delegation', id: '1').
+        stub_post(method: 'cancel_order', id: '1').
           to_return(body: fixture('cancel.json'))
       end
 
       it "cancel an order" do
         order = @client.cancel 1
-        expect(a_post(method: 'cancel_delegation', id: '1')).to have_been_made
+        expect(a_post(method: 'cancel_order', id: '1')).to have_been_made
         expect(order['result']).to eq 'success'
       end
     end
@@ -127,14 +127,14 @@ describe Huobi do
     describe "#sync" do
       before do
         @secret = 'secret'
-        stub_post(method: 'get_delegation', id: '1').
+        stub_post(method: 'order_info', id: '1').
           to_return(body: fixture('sync.json'))
       end
 
       it "cancel an order" do
         order = @client.sync 1
-        expect(a_post(method: 'get_delegation', id: '1')).to have_been_made
-        expect(order[0]['order_price']).to eq '5107.000'
+        expect(a_post(method: 'order_info', id: '1')).to have_been_made
+        expect(order['order_price']).to eq '5107.000'
       end
     end
   end
