@@ -1,6 +1,6 @@
-# Huobi
+# Huobi V2
 
-TODO: Write a gem description
+Modified fork to work with v2 of Huobi trade API (ie for Litecoin)
 
 ## Installation
 
