@@ -7,7 +7,7 @@ module Huobi
     end
 
     def post(path, options={})
-      options.merge! created: created_at, access_key: @key
+      options.merge! created: created_at, access_key: @key, coin_type: 1
       request(:post, path, options)
     end
 

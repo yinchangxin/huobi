@@ -33,6 +33,14 @@ module Huobi
       post '', method: 'sell', price: options[:price], amount: options[:amount]
     end
 
+    def sell_market amount
+      post '', method: 'sell_market', amount: amount
+    end
+
+    def buy_market amount
+      post '', method: 'buy_market', amount: amount
+    end
+
     def cancel order_id
       post '', method: 'cancel_order', id: order_id
     end
